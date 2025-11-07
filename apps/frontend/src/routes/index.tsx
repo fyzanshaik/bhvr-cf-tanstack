@@ -94,14 +94,28 @@ function DemoPage() {
 				<div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:60px_60px]" />
 				<div className="relative max-w-6xl mx-auto px-8 text-center">
 					<div className="inline-block text-6xl mb-5 animate-bounce-slow">🦫</div>
-					<h1 className="text-6xl md:text-7xl font-black mb-4 bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">bhvr</h1>
-					<p className="text-2xl md:text-3xl font-semibold mb-3 text-slate-300">Bun + Hono + Vite + React</p>
-					<p className="text-base text-slate-400 max-w-2xl mx-auto mb-8">Production-ready, type-safe fullstack monorepo for Cloudflare's edge</p>
+					<h1 className="text-6xl md:text-7xl font-black mb-4 bg-gradient-to-r from-white via-slate-200 to-white bg-clip-text text-transparent">
+						bhvr
+					</h1>
+					<p className="text-2xl md:text-3xl font-semibold mb-3 text-slate-300">
+						Bun + Hono + Vite + React
+					</p>
+					<p className="text-base text-slate-400 max-w-2xl mx-auto mb-8">
+						Production-ready, type-safe fullstack monorepo for Cloudflare's edge
+					</p>
 					<div className="flex flex-wrap gap-3 justify-center">
-						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">⚡ Edge-First</span>
-						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">🔒 Type-Safe</span>
-						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">🚀 Fast</span>
-						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">📦 Monorepo</span>
+						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">
+							⚡ Edge-First
+						</span>
+						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">
+							🔒 Type-Safe
+						</span>
+						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">
+							🚀 Fast
+						</span>
+						<span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">
+							📦 Monorepo
+						</span>
 					</div>
 				</div>
 			</div>
@@ -119,7 +133,9 @@ function DemoPage() {
 								<CardHeader className="pb-3">
 									<div className="flex items-center justify-between mb-2">
 										<CardTitle className="text-lg font-bold text-slate-900">Hello World</CardTitle>
-										<span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">GET</span>
+										<span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">
+											GET
+										</span>
 									</div>
 									<p className="text-sm text-slate-600">Test API connectivity</p>
 								</CardHeader>
@@ -143,16 +159,22 @@ function DemoPage() {
 										<div className="p-4 bg-red-50 rounded-lg border-2 border-red-200 animate-fade-in">
 											<div className="flex items-center gap-2 mb-2">
 												<span className="text-lg">⚠️</span>
-												<span className="text-sm font-bold text-red-700">API Connection Failed</span>
+												<span className="text-sm font-bold text-red-700">
+													API Connection Failed
+												</span>
 											</div>
-											<p className="text-xs text-red-600 mb-2">Unable to connect to the backend API.</p>
+											<p className="text-xs text-red-600 mb-2">
+												Unable to connect to the backend API.
+											</p>
 											<div className="p-2 bg-red-100 rounded text-xs text-red-700 font-mono">
 												<p className="font-semibold mb-1">💡 Make sure:</p>
 												<p>
-													• Backend is running: <code className="bg-red-200 px-1 rounded">bun dev</code>
+													• Backend is running:{' '}
+													<code className="bg-red-200 px-1 rounded">bun dev</code>
 												</p>
 												<p>
-													• API is accessible at: <code className="bg-red-200 px-1 rounded">http://localhost:8787</code>
+													• API is accessible at:{' '}
+													<code className="bg-red-200 px-1 rounded">http://localhost:8787</code>
 												</p>
 											</div>
 										</div>
@@ -161,9 +183,13 @@ function DemoPage() {
 										<div className="p-4 bg-slate-50 rounded-lg border border-slate-200 animate-fade-in">
 											<div className="flex items-center gap-2 mb-2">
 												<span className="text-sm font-semibold text-slate-700">Response:</span>
-												<span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">200 OK</span>
+												<span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">
+													200 OK
+												</span>
 											</div>
-											<pre className="text-xs overflow-auto text-slate-800 font-mono">{JSON.stringify(helloData, null, 2)}</pre>
+											<pre className="text-xs overflow-auto text-slate-800 font-mono">
+												{JSON.stringify(helloData, null, 2)}
+											</pre>
 										</div>
 									)}
 								</CardContent>
@@ -175,7 +201,9 @@ function DemoPage() {
 								<CardHeader className="pb-3">
 									<div className="flex items-center justify-between mb-2">
 										<CardTitle className="text-lg font-bold text-slate-900">Fetch Users</CardTitle>
-										<span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">GET</span>
+										<span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">
+											GET
+										</span>
 									</div>
 									<p className="text-sm text-slate-600">Retrieve all users from D1</p>
 								</CardHeader>
@@ -199,46 +227,67 @@ function DemoPage() {
 										<div className="p-4 bg-red-50 rounded-lg border-2 border-red-200 animate-fade-in">
 											<div className="flex items-center gap-2 mb-2">
 												<span className="text-lg">⚠️</span>
-												<span className="text-sm font-bold text-red-700">Database Connection Failed</span>
+												<span className="text-sm font-bold text-red-700">
+													Database Connection Failed
+												</span>
 											</div>
-											<p className="text-xs text-red-600 mb-2">Unable to fetch users from the database.</p>
+											<p className="text-xs text-red-600 mb-2">
+												Unable to fetch users from the database.
+											</p>
 											<div className="p-2 bg-red-100 rounded text-xs text-red-700 font-mono">
 												<p className="font-semibold mb-1">💡 Make sure:</p>
 												<p>
-													• Database is set up: <code className="bg-red-200 px-1 rounded">bun run setup</code>
+													• Database is set up:{' '}
+													<code className="bg-red-200 px-1 rounded">bun run setup</code>
 												</p>
 												<p>
-													• Migrations applied: <code className="bg-red-200 px-1 rounded">bun run db:migrate</code>
+													• Migrations applied:{' '}
+													<code className="bg-red-200 px-1 rounded">bun run db:migrate</code>
 												</p>
 												<p>• Check D1 database connection</p>
 											</div>
 										</div>
 									)}
-									{showUsers && usersData && !usersError && usersData.data && usersData.data.length === 0 && (
-										<div className="p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200 animate-fade-in">
-											<div className="flex items-center gap-2 mb-2">
-												<span className="text-lg">📭</span>
-												<span className="text-sm font-bold text-yellow-700">No Users Found</span>
-											</div>
-											<p className="text-xs text-yellow-600 mb-2">The database is connected but no users exist yet.</p>
-											<div className="p-2 bg-yellow-100 rounded text-xs text-yellow-700 font-mono">
-												<p className="font-semibold mb-1">💡 Try:</p>
-												<p>
-													• Run seed script: <code className="bg-yellow-200 px-1 rounded">bun run db:seed</code>
+									{showUsers &&
+										usersData &&
+										!usersError &&
+										usersData.data &&
+										usersData.data.length === 0 && (
+											<div className="p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200 animate-fade-in">
+												<div className="flex items-center gap-2 mb-2">
+													<span className="text-lg">📭</span>
+													<span className="text-sm font-bold text-yellow-700">No Users Found</span>
+												</div>
+												<p className="text-xs text-yellow-600 mb-2">
+													The database is connected but no users exist yet.
 												</p>
-												<p>• Or create a user using the form →</p>
+												<div className="p-2 bg-yellow-100 rounded text-xs text-yellow-700 font-mono">
+													<p className="font-semibold mb-1">💡 Try:</p>
+													<p>
+														• Run seed script:{' '}
+														<code className="bg-yellow-200 px-1 rounded">bun run db:seed</code>
+													</p>
+													<p>• Or create a user using the form →</p>
+												</div>
 											</div>
-										</div>
-									)}
-									{showUsers && usersData && !usersError && usersData.data && usersData.data.length > 0 && (
-										<div className="p-4 bg-slate-50 rounded-lg border border-slate-200 max-h-64 overflow-auto animate-fade-in">
-											<div className="flex items-center gap-2 mb-2">
-												<span className="text-sm font-semibold text-slate-700">Response:</span>
-												<span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded">{usersData.data?.length || 0} users</span>
+										)}
+									{showUsers &&
+										usersData &&
+										!usersError &&
+										usersData.data &&
+										usersData.data.length > 0 && (
+											<div className="p-4 bg-slate-50 rounded-lg border border-slate-200 max-h-64 overflow-auto animate-fade-in">
+												<div className="flex items-center gap-2 mb-2">
+													<span className="text-sm font-semibold text-slate-700">Response:</span>
+													<span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded">
+														{usersData.data?.length || 0} users
+													</span>
+												</div>
+												<pre className="text-xs text-slate-800 font-mono">
+													{JSON.stringify(usersData, null, 2)}
+												</pre>
 											</div>
-											<pre className="text-xs text-slate-800 font-mono">{JSON.stringify(usersData, null, 2)}</pre>
-										</div>
-									)}
+										)}
 								</CardContent>
 							</Card>
 						</div>
@@ -248,7 +297,9 @@ function DemoPage() {
 								<CardHeader className="pb-3">
 									<div className="flex items-center justify-between mb-2">
 										<CardTitle className="text-lg font-bold text-slate-900">Create User</CardTitle>
-										<span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded">POST</span>
+										<span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded">
+											POST
+										</span>
 									</div>
 									<p className="text-sm text-slate-600">Add new user with validation</p>
 								</CardHeader>
@@ -258,13 +309,28 @@ function DemoPage() {
 											<Label htmlFor="name" className="text-sm font-semibold text-slate-700">
 												Name
 											</Label>
-											<Input id="name" placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} required className="h-10" />
+											<Input
+												id="name"
+												placeholder="John Doe"
+												value={name}
+												onChange={(e) => setName(e.target.value)}
+												required
+												className="h-10"
+											/>
 										</div>
 										<div className="space-y-2">
 											<Label htmlFor="email" className="text-sm font-semibold text-slate-700">
 												Email
 											</Label>
-											<Input id="email" type="email" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="h-10" />
+											<Input
+												id="email"
+												type="email"
+												placeholder="john@example.com"
+												value={email}
+												onChange={(e) => setEmail(e.target.value)}
+												required
+												className="h-10"
+											/>
 										</div>
 										<Button
 											type="submit"
@@ -283,7 +349,9 @@ function DemoPage() {
 										</Button>
 										{createUserMutation.isSuccess && (
 											<div className="p-3 bg-green-50 border border-green-200 rounded-lg text-center animate-fade-in">
-												<p className="text-sm font-semibold text-green-700">✓ User created successfully!</p>
+												<p className="text-sm font-semibold text-green-700">
+													✓ User created successfully!
+												</p>
 											</div>
 										)}
 										{createUserMutation.isError && (
@@ -301,7 +369,9 @@ function DemoPage() {
 
 			<div className="max-w-6xl mx-auto px-8 py-16">
 				<div className="text-center mb-12">
-					<h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Tech Stack Architecture</h2>
+					<h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
+						Tech Stack Architecture
+					</h2>
 					<p className="text-slate-300 text-base">Full-stack type safety from database to UI</p>
 				</div>
 
@@ -318,13 +388,21 @@ function DemoPage() {
 								</div>
 							</div>
 							<div className="flex items-center gap-3 flex-wrap">
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">React 18</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									React 18
+								</div>
 								<span className="text-slate-400 text-xl">→</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">Vite</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									Vite
+								</div>
 								<span className="text-slate-400 text-xl">→</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">Tailwind v4</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									Tailwind v4
+								</div>
 								<span className="text-slate-400 text-xl">+</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">Shadcn UI</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									Shadcn UI
+								</div>
 							</div>
 						</CardContent>
 					</Card>
@@ -341,11 +419,17 @@ function DemoPage() {
 								</div>
 							</div>
 							<div className="flex items-center gap-3 flex-wrap">
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">TanStack Router</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									TanStack Router
+								</div>
 								<span className="text-slate-400 text-xl">+</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">TanStack Query</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									TanStack Query
+								</div>
 								<span className="text-slate-400 text-xl">+</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">Zustand</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									Zustand
+								</div>
 							</div>
 						</CardContent>
 					</Card>
@@ -362,11 +446,17 @@ function DemoPage() {
 								</div>
 							</div>
 							<div className="flex items-center justify-center gap-4 flex-wrap">
-								<div className="px-5 py-3 bg-white/20 text-white rounded-lg font-semibold border-2 border-white/30">Frontend</div>
+								<div className="px-5 py-3 bg-white/20 text-white rounded-lg font-semibold border-2 border-white/30">
+									Frontend
+								</div>
 								<span className="text-2xl font-bold text-purple-300">↔</span>
-								<div className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-bold shadow-lg border-2 border-purple-400">Hono RPC</div>
+								<div className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-bold shadow-lg border-2 border-purple-400">
+									Hono RPC
+								</div>
 								<span className="text-2xl font-bold text-purple-300">↔</span>
-								<div className="px-5 py-3 bg-white/20 text-white rounded-lg font-semibold border-2 border-white/30">Backend</div>
+								<div className="px-5 py-3 bg-white/20 text-white rounded-lg font-semibold border-2 border-white/30">
+									Backend
+								</div>
 							</div>
 						</CardContent>
 					</Card>
@@ -383,13 +473,21 @@ function DemoPage() {
 								</div>
 							</div>
 							<div className="flex items-center gap-3 flex-wrap">
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">CF Workers</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									CF Workers
+								</div>
 								<span className="text-slate-400 text-xl">→</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">Hono</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									Hono
+								</div>
 								<span className="text-slate-400 text-xl">→</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">Drizzle ORM</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									Drizzle ORM
+								</div>
 								<span className="text-slate-400 text-xl">→</span>
-								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">D1 / PostgreSQL</div>
+								<div className="px-4 py-2 bg-white/10 text-white rounded-lg font-medium text-sm border border-white/20">
+									D1 / PostgreSQL
+								</div>
 							</div>
 						</CardContent>
 					</Card>
