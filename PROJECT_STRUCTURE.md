@@ -27,7 +27,7 @@ cloudflare-fullstack-monorepo/
 │   │   │   │   └── api.ts         # API endpoints (users, posts)
 │   │   │   ├── 📁 scripts/
 │   │   │   │   └── seed.ts        # Database seeding
-│   │   │   ├── index.ts           # Main Hono app
+│   │   │   ├── index.ts           # Main  Hono app
 │   │   │   └── types.ts           # Environment & context types
 │   │   │
 │   │   ├── 📁 migrations/         # Database migrations (auto-generated)

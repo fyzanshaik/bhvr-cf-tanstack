@@ -13,9 +13,8 @@ bun install
 
 # Or setup manually:
 cd apps/backend
-bunx wrangler d1 create cloudflare-d1-db --local
-bun run db:generate
-bun run db:migrate
+bun run db:generate        # Generate migration files
+bun run db:migrate         # Apply migrations (auto-creates local DB)
 ```
 
 ## 🚀 Development

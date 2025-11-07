@@ -17,13 +17,13 @@ cd apps/backend
 bunx wrangler login
 ```
 
-### 2. Create D1 Database
+### 2. Create D1 Database (Production)
 
 ```bash
 bunx wrangler d1 create cloudflare-d1-db
 ```
 
-This will output a database ID. Copy it and update `apps/backend/wrangler.toml`:
+**Note**: This creates a production D1 database (not local). This will output a database ID. Copy it and update `apps/backend/wrangler.toml`:
 
 ```toml
 [[d1_databases]]
@@ -97,11 +97,11 @@ bunx wrangler pages deploy dist --project-name=cloudflare-fullstack-frontend
 3. Click "Create a project" → "Connect to Git"
 4. Select your repository
 5. Configure build settings:
-   - **Build command**: `cd apps/frontend && bun install && bun run build`
-   - **Build output directory**: `apps/frontend/dist`
-   - **Root directory**: `/`
+   -  **Build command**: `cd apps/frontend && bun install && bun run build`
+   -  **Build output directory**: `apps/frontend/dist`
+   -  **Root directory**: `/`
 6. Add environment variable:
-   - `VITE_API_URL`: Your Worker URL
+   -  `VITE_API_URL`: Your Worker URL
 7. Click "Save and Deploy"
 
 ### 4. Configure Custom Domain (Optional)
@@ -115,11 +115,11 @@ bunx wrangler pages deploy dist --project-name=cloudflare-fullstack-frontend
 
 ### Backend (.dev.vars for local, wrangler.toml for production)
 
-- `ENVIRONMENT`: development or production
+-  `ENVIRONMENT`: development or production
 
 ### Frontend (.env for local, Cloudflare Pages settings for production)
 
-- `VITE_API_URL`: Backend API URL
+-  `VITE_API_URL`: Backend API URL
 
 ## Monitoring and Logs
 
@@ -143,9 +143,9 @@ If you encounter CORS errors, ensure your Worker's CORS configuration includes y
 ```typescript
 // apps/backend/src/index.ts
 cors({
-  origin: ['https://your-pages-domain.pages.dev'],
-  credentials: true,
-})
+	origin: ['https://your-pages-domain.pages.dev'],
+	credentials: true,
+});
 ```
 
 ### Database Migration Issues
@@ -188,9 +188,8 @@ bunx wrangler pages deploy dist --project-name=cloudflare-fullstack-frontend
 
 Cloudflare's free tier includes:
 
-- **Workers**: 100,000 requests/day
-- **Pages**: Unlimited requests, 500 builds/month
-- **D1**: 5 GB storage, 5 million reads/day, 100,000 writes/day
+-  **Workers**: 100,000 requests/day
+-  **Pages**: Unlimited requests, 500 builds/month
+-  **D1**: 5 GB storage, 5 million reads/day, 100,000 writes/day
 
 This is more than enough for development and small-to-medium production apps!
-

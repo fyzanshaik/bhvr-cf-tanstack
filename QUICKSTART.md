@@ -13,15 +13,14 @@ bun install
 ```bash
 cd apps/backend
 
-# Create local D1 database
-bunx wrangler d1 create cloudflare-d1-db --local
-
-# Generate database schema
+# Generate database schema (creates migration files)
 bun run db:generate
 
-# Apply migrations
+# Apply migrations to local database
 bun run db:migrate
 ```
+
+**Note**: For local development, Wrangler automatically creates a local D1 database when you run migrations or start the dev server. No need to create it manually!
 
 ## Step 3: Seed Database with Demo Data
 
@@ -61,28 +60,29 @@ bun dev
 
 ## Step 5: Open Your Browser
 
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:8787
+-  **Frontend**: http://localhost:5173
+-  **Backend API**: http://localhost:8787
 
 ## ✅ You Should See
 
 1. **Home Page** (`/`):
-   - Welcome message
-   - Feature cards
-   - API connection test showing "Hello from Cloudflare Workers + Hono!"
+
+   -  Welcome message
+   -  Feature cards
+   -  API connection test showing "Hello from Cloudflare Workers + Hono!"
 
 2. **Users Page** (`/users`):
-   - Form to add new users
-   - Table showing the 3 demo users you seeded
-   - Ability to create new users and see them appear instantly
+   -  Form to add new users
+   -  Table showing the 3 demo users you seeded
+   -  Ability to create new users and see them appear instantly
 
 ## 🎉 Success Indicators
 
-- ✅ Frontend loads without errors
-- ✅ API connection test shows green checkmark
-- ✅ Users page displays demo users
-- ✅ You can create new users via the form
-- ✅ New users appear in the table immediately
+-  ✅ Frontend loads without errors
+-  ✅ API connection test shows green checkmark
+-  ✅ Users page displays demo users
+-  ✅ You can create new users via the form
+-  ✅ New users appear in the table immediately
 
 ## 🐛 Troubleshooting
 
@@ -90,16 +90,16 @@ bun dev
 
 If ports 5173 or 8787 are in use:
 
-**Frontend (5173):**
-Edit `apps/frontend/vite.config.ts` and change the port:
+**Frontend (5173):** Edit `apps/frontend/vite.config.ts` and change the port:
+
 ```typescript
 server: {
   port: 3000, // Change to any available port
 }
 ```
 
-**Backend (8787):**
-Edit `apps/backend/wrangler.toml`:
+**Backend (8787):** Edit `apps/backend/wrangler.toml`:
+
 ```toml
 [dev]
 port = 8788  # Change to any available port
@@ -107,12 +107,14 @@ port = 8788  # Change to any available port
 
 ### Database Not Found
 
-If you get "database not found" errors:
+If you get "database not found" errors, just run migrations:
+
 ```bash
 cd apps/backend
-bunx wrangler d1 create cloudflare-d1-db --local
 bun run db:migrate
 ```
+
+The local D1 database is automatically created when you apply migrations or start the dev server.
 
 ### CORS Errors
 
@@ -121,6 +123,7 @@ Make sure both servers are running and the frontend proxy is configured correctl
 ### Type Errors
 
 If you see TypeScript errors:
+
 ```bash
 bun install
 bun run type-check
@@ -136,13 +139,12 @@ bun run type-check
 
 ## 🎓 Learn the Stack
 
-- **Hono**: Fast web framework for the edge
-- **D1**: SQLite database on Cloudflare's network
-- **Drizzle**: Type-safe ORM for database operations
-- **React**: UI library
-- **TanStack Router**: Type-safe routing
-- **TanStack Query**: Server state management
-- **Tailwind + Shadcn**: Beautiful UI components
+-  **Hono**: Fast web framework for the edge
+-  **D1**: SQLite database on Cloudflare's network
+-  **Drizzle**: Type-safe ORM for database operations
+-  **React**: UI library
+-  **TanStack Router**: Type-safe routing
+-  **TanStack Query**: Server state management
+-  **Tailwind + Shadcn**: Beautiful UI components
 
 Enjoy building! 🚀
-

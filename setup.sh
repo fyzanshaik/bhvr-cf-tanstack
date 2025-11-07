@@ -29,15 +29,6 @@ cd apps/backend
 echo "🗄️ Setting up database..."
 echo ""
 
-# Check if D1 database already exists
-if bunx wrangler d1 list | grep -q "cloudflare-d1-db"; then
-    echo "✅ D1 database already exists"
-else
-    echo "📝 Creating D1 database..."
-    bunx wrangler d1 create cloudflare-d1-db --local
-fi
-
-echo ""
 echo "📝 Generating database migrations..."
 bun run db:generate
 

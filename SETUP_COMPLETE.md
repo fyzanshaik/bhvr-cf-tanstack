@@ -5,50 +5,55 @@ Your Cloudflare Fullstack Monorepo is ready to use!
 ## ✅ What's Been Created
 
 ### 📦 Monorepo Structure
-- ✅ Turborepo configuration with workspace management
-- ✅ Bun package manager setup
-- ✅ TypeScript configuration across all packages
+
+-  ✅ Turborepo configuration with workspace management
+-  ✅ Bun package manager setup
+-  ✅ TypeScript configuration across all packages
 
 ### 🔧 Backend (Cloudflare Workers)
-- ✅ Hono web framework configured
-- ✅ D1 database bindings in `wrangler.toml`
-- ✅ Drizzle ORM with type-safe queries
-- ✅ Database schema (users, posts tables)
-- ✅ Generated SQL migrations
-- ✅ API routes with Hono RPC exports:
-  - `GET /` - Health check
-  - `GET /api/hello` - Demo endpoint
-  - `GET /api/users` - Get all users
-  - `GET /api/users/:id` - Get single user
-  - `POST /api/users` - Create user
-  - `GET /api/posts` - Get all posts
-- ✅ Zod validation on requests
-- ✅ CORS configured for frontend
+
+-  ✅ Hono web framework configured
+-  ✅ D1 database bindings in `wrangler.toml`
+-  ✅ Drizzle ORM with type-safe queries
+-  ✅ Database schema (users, posts tables)
+-  ✅ Generated SQL migrations
+-  ✅ API routes with Hono RPC exports:
+   -  `GET /` - Health check
+   -  `GET /api/hello` - Demo endpoint
+   -  `GET /api/users` - Get all users
+   -  `GET /api/users/:id` - Get single user
+   -  `POST /api/users` - Create user
+   -  `GET /api/posts` - Get all posts
+-  ✅ Zod validation on requests
+-  ✅ CORS configured for frontend
 
 ### 🎨 Frontend (Cloudflare Pages)
-- ✅ React 18 + Vite setup
-- ✅ TanStack Router with file-based routing
-- ✅ TanStack Query for server state
-- ✅ Zustand for client state
-- ✅ Tailwind CSS v4 with dark mode support
-- ✅ Shadcn UI components (Button, Card, Input, Label, Table)
-- ✅ Hono RPC client for type-safe API calls
-- ✅ Two demo pages:
-  - `/` - Home with API connection test
-  - `/users` - User management with CRUD
+
+-  ✅ React 18 + Vite setup
+-  ✅ TanStack Router with file-based routing
+-  ✅ TanStack Query for server state
+-  ✅ Zustand for client state
+-  ✅ Tailwind CSS v4 with dark mode support
+-  ✅ Shadcn UI components (Button, Card, Input, Label, Table)
+-  ✅ Hono RPC client for type-safe API calls
+-  ✅ Two demo pages:
+   -  `/` - Home with API connection test
+   -  `/users` - User management with CRUD
 
 ### 📚 Shared Packages
-- ✅ `@repo/db` - Database schema and types
-- ✅ `@repo/shared` - Zod schemas and TypeScript types
+
+-  ✅ `@repo/db` - Database schema and types
+-  ✅ `@repo/shared` - Zod schemas and TypeScript types
 
 ### 📖 Documentation
-- ✅ `README.md` - Complete project documentation
-- ✅ `QUICKSTART.md` - 5-minute setup guide
-- ✅ `DEPLOYMENT.md` - Deployment instructions
-- ✅ `COMMANDS.md` - All available commands
-- ✅ `PROJECT_STRUCTURE.md` - Detailed structure overview
-- ✅ `VERIFICATION.md` - Setup verification checklist
-- ✅ `setup.sh` - Automated setup script
+
+-  ✅ `README.md` - Complete project documentation
+-  ✅ `QUICKSTART.md` - 5-minute setup guide
+-  ✅ `DEPLOYMENT.md` - Deployment instructions
+-  ✅ `COMMANDS.md` - All available commands
+-  ✅ `PROJECT_STRUCTURE.md` - Detailed structure overview
+-  ✅ `VERIFICATION.md` - Setup verification checklist
+-  ✅ `setup.sh` - Automated setup script
 
 ## 🚀 Quick Start (3 Steps)
 
@@ -57,8 +62,10 @@ Your Cloudflare Fullstack Monorepo is ready to use!
 ```bash
 cd apps/backend
 
-# Generate and apply migrations
+# Generate migrations (creates SQL from schema)
 bun run db:generate
+
+# Apply migrations (creates local D1 database automatically)
 bun run db:migrate
 
 # Seed with demo data
@@ -79,10 +86,11 @@ bun dev
 Visit: http://localhost:5173
 
 You should see:
-- ✅ Beautiful home page with feature cards
-- ✅ Working API connection test
-- ✅ "View Demo Users" button
-- ✅ Users page with demo data
+
+-  ✅ Beautiful home page with feature cards
+-  ✅ Working API connection test
+-  ✅ "View Demo Users" button
+-  ✅ Users page with demo data
 
 ## 🎯 What You Get
 
@@ -99,28 +107,28 @@ const data = await response.json(); // Fully typed! ✨
 
 ### Modern Developer Experience
 
-- **Hot Reload**: Changes appear instantly
-- **Type Checking**: Catch errors before runtime
-- **Autocomplete**: Full IntelliSense everywhere
-- **Fast Builds**: Turborepo caching
+-  **Hot Reload**: Changes appear instantly
+-  **Type Checking**: Catch errors before runtime
+-  **Autocomplete**: Full IntelliSense everywhere
+-  **Fast Builds**: Turborepo caching
 
 ### Production Ready
 
-- **Cloudflare Workers**: Backend runs on 300+ edge locations
-- **D1 Database**: SQLite at the edge
-- **Cloudflare Pages**: CDN-hosted frontend
-- **Zero Cold Starts**: Instant response times
+-  **Cloudflare Workers**: Backend runs on 300+ edge locations
+-  **D1 Database**: SQLite at the edge
+-  **Cloudflare Pages**: CDN-hosted frontend
+-  **Zero Cold Starts**: Instant response times
 
 ## 📚 Important Files
 
-| File | Purpose |
-|------|---------|
-| `package.json` | Root workspace config |
-| `turbo.json` | Build pipeline |
-| `apps/backend/wrangler.toml` | Workers config |
-| `apps/backend/src/index.ts` | Backend entry point |
-| `apps/frontend/src/main.tsx` | Frontend entry point |
-| `packages/db/src/schema.ts` | Database schema |
+| File                         | Purpose               |
+| ---------------------------- | --------------------- |
+| `package.json`               | Root workspace config |
+| `turbo.json`                 | Build pipeline        |
+| `apps/backend/wrangler.toml` | Workers config        |
+| `apps/backend/src/index.ts`  | Backend entry point   |
+| `apps/frontend/src/main.tsx` | Frontend entry point  |
+| `packages/db/src/schema.ts`  | Database schema       |
 
 ## 🔥 Key Features Demonstrated
 
@@ -149,8 +157,8 @@ const users = await db.select().from(users).all();
 ```typescript
 // Shared (packages/shared/src/schemas.ts)
 export const createUserSchema = z.object({
-  name: z.string().min(1).max(100),
-  email: z.string().email(),
+	name: z.string().min(1).max(100),
+	email: z.string().email(),
 });
 
 // Validated in backend, typed in frontend!
@@ -158,9 +166,9 @@ export const createUserSchema = z.object({
 
 ### 4. State Management
 
-- **Server State**: TanStack Query (caching, refetching)
-- **Client State**: Zustand (theme, user preferences)
-- **Router State**: TanStack Router (navigation)
+-  **Server State**: TanStack Query (caching, refetching)
+-  **Client State**: Zustand (theme, user preferences)
+-  **Router State**: TanStack Router (navigation)
 
 ### 5. UI Components (Shadcn + Tailwind)
 
@@ -197,55 +205,61 @@ bun run build           # Build frontend
 ### 1. Explore the Code
 
 Start with these files:
+
 1. `apps/frontend/src/routes/index.tsx` - Home page
 2. `apps/backend/src/routes/api.ts` - API endpoints
 3. `packages/db/src/schema.ts` - Database schema
 
 ### 2. Make It Your Own
 
-- Add more tables to the schema
-- Create new API endpoints
-- Add new pages and routes
-- Customize the UI theme
+-  Add more tables to the schema
+-  Create new API endpoints
+-  Add new pages and routes
+-  Customize the UI theme
 
 ### 3. Deploy to Production
 
 Follow `DEPLOYMENT.md` to deploy:
-- Backend → Cloudflare Workers
-- Frontend → Cloudflare Pages
-- Database → D1 Production
+
+-  Backend → Cloudflare Workers
+-  Frontend → Cloudflare Pages
+-  Database → D1 Production
 
 ### 4. Learn More
 
-- [Hono Documentation](https://hono.dev/)
-- [Drizzle ORM Docs](https://orm.drizzle.team/)
-- [TanStack Router](https://tanstack.com/router)
-- [Cloudflare D1](https://developers.cloudflare.com/d1/)
+-  [Hono Documentation](https://hono.dev/)
+-  [Drizzle ORM Docs](https://orm.drizzle.team/)
+-  [TanStack Router](https://tanstack.com/router)
+-  [Cloudflare D1](https://developers.cloudflare.com/d1/)
 
 ## 🎨 Tech Stack Summary
 
 **Frontend:**
-- React 18
-- Vite
-- TanStack Router + Query
-- Tailwind CSS v4
-- Shadcn UI
-- Zustand
+
+-  React 18
+-  Vite
+-  TanStack Router + Query
+-  Tailwind CSS v4
+-  Shadcn UI
+-  Zustand
 
 **Backend:**
-- Hono
-- Cloudflare Workers
-- Drizzle ORM
-- Zod Validation
+
+-  Hono
+-  Cloudflare Workers
+-  Drizzle ORM
+-  Zod Validation
 
 **Database:**
-- Cloudflare D1 (SQLite)
+
+-  Cloudflare D1 (SQLite)
 
 **Tooling:**
-- Bun
-- Turborepo
-- TypeScript
-- Wrangler
+
+-  Bun
+-  Turborepo
+-  TypeScript
+-  Wrangler
 
 ## 💡 Pro Tips
 
@@ -265,20 +279,21 @@ Follow `DEPLOYMENT.md` to deploy:
 ## 🎉 You're All Set!
 
 Your monorepo is configured with:
-- ✅ Modern tooling
-- ✅ Type safety everywhere
-- ✅ Beautiful UI components
-- ✅ Edge-first architecture
-- ✅ Great developer experience
+
+-  ✅ Modern tooling
+-  ✅ Type safety everywhere
+-  ✅ Beautiful UI components
+-  ✅ Edge-first architecture
+-  ✅ Great developer experience
 
 **Start building something amazing!** 🚀
 
 ---
 
 Questions or issues? Check the documentation files:
-- `README.md` - Main docs
-- `QUICKSTART.md` - Quick start
-- `DEPLOYMENT.md` - Deploy guide
-- `COMMANDS.md` - Command reference
-- `PROJECT_STRUCTURE.md` - Structure overview
 
+-  `README.md` - Main docs
+-  `QUICKSTART.md` - Quick start
+-  `DEPLOYMENT.md` - Deploy guide
+-  `COMMANDS.md` - Command reference
+-  `PROJECT_STRUCTURE.md` - Structure overview

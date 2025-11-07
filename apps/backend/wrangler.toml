@@ -11,7 +11,7 @@ port = 8787
 [[d1_databases]]
 binding = "DB"
 database_name = "cloudflare-d1-db"
-database_id = ""  # Will be filled when you create the D1 database
+database_id = "local-db"  # Placeholder for local development
 migrations_dir = "migrations"
 
 # Environment variables
