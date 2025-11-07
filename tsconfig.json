@@ -14,7 +14,16 @@
 		"forceConsistentCasingInFileNames": true,
 		"isolatedModules": true,
 		"declaration": true,
-		"declarationMap": true
+		"declarationMap": true,
+		"types": ["bun-types"],
+		"baseUrl": ".",
+		"paths": {
+			"@repo/backend": ["apps/backend/src/index.ts"],
+			"@repo/backend/*": ["apps/backend/src/*"],
+			"@repo/frontend/*": ["apps/frontend/src/*"],
+			"@repo/db/*": ["packages/db/src/*"],
+			"@repo/shared/*": ["packages/shared/src/*"]
+		}
 	},
 	"exclude": ["node_modules", "dist", ".turbo"]
 }

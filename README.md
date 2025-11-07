@@ -63,6 +63,150 @@ bun dev
 
 Visit **http://localhost:5173** 🎉
 
+## Manual Setup (Alternative to Automated Script)
+
+If you prefer to set up manually or the automated script fails, follow these steps:
+
+### 1. Install Dependencies
+
+```bash
+bun install
+```
+
+### 2. Authenticate with Cloudflare
+
+```bash
+bunx wrangler login
+```
+
+This will open your browser to authenticate with Cloudflare.
+
+**If authentication fails:**
+- Your session may have expired. Run `bunx wrangler login` again.
+- Check that you have a Cloudflare account with Workers access.
+
+### 3. Create D1 Database
+
+```bash
+bunx wrangler d1 create bhvr-db
+```
+
+**Note:** You can use any name for your database. Replace `bhvr-db` with your preferred name.
+
+The command will output something like:
+```
+✅ Successfully created DB 'bhvr-db'!
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bhvr-db"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+**Copy the `database_id`** - you'll need it in the next step.
+
+### 4. Update wrangler.toml
+
+Open `apps/backend/wrangler.toml` and find the production database configuration:
+
+```toml
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "cloudflare-d1-db"
+database_id = "YOUR_DATABASE_ID_HERE"
+```
+
+**Update these values:**
+- Replace `YOUR_DATABASE_ID_HERE` with the `database_id` from step 3
+- Replace `cloudflare-d1-db` with your database name (if different)
+
+**Important:** The local development database uses `database_id = "local-db"` - don't change this!
+
+### 5. Apply Migrations
+
+```bash
+cd apps/backend
+bun run db:migrate
+```
+
+This applies migrations to your local database.
+
+### 6. Seed Demo Data (Optional)
+
+```bash
+bunx wrangler d1 execute cloudflare-d1-db --local --command "INSERT INTO users (name, email) VALUES ('Alice Johnson', 'alice@example.com'), ('Bob Smith', 'bob@example.com'), ('Charlie Davis', 'charlie@example.com')"
+```
+
+### 7. Verify Setup
+
+```bash
+bunx wrangler d1 list
+```
+
+This shows all your D1 databases. You should see your newly created database.
+
+## Database Management Commands
+
+### List All Databases
+
+```bash
+bunx wrangler d1 list
+```
+
+Shows all D1 databases in your Cloudflare account with their names and IDs.
+
+### Get Database Details
+
+```bash
+bunx wrangler d1 info <database-name>
+```
+
+Shows detailed information about a specific database, including:
+- Database ID
+- Creation date
+- Size
+- Location
+
+### Execute SQL Commands
+
+**Local database:**
+```bash
+bunx wrangler d1 execute <database-name> --local --command "SELECT * FROM users"
+```
+
+**Production database:**
+```bash
+bunx wrangler d1 execute <database-name> --command "SELECT * FROM users"
+```
+
+### Understanding wrangler.toml Database Configuration
+
+The `apps/backend/wrangler.toml` file has two database configurations:
+
+**1. Local Development (default):**
+```toml
+[[d1_databases]]
+binding = "DB"
+database_name = "cloudflare-d1-db"
+database_id = "local-db"
+migrations_dir = "migrations"
+```
+- Used when running `bun dev` locally
+- `database_id = "local-db"` is a special value for local development
+- Don't change this unless you know what you're doing
+
+**2. Production:**
+```toml
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "cloudflare-d1-db"
+database_id = "your-actual-database-id"
+migrations_dir = "migrations"
+```
+- Used when deploying to Cloudflare Workers
+- `database_id` must match the ID from `wrangler d1 create`
+- `database_name` should match the name you used when creating the database
+
 ## 🔐 GitHub Actions Setup (Required for Auto-Deployment)
 
 **Skip this if:** You plan to deploy manually via CLI only.
@@ -283,6 +427,86 @@ bun run db:migrate:prod # Apply to production
 cd apps/backend && bun run deploy      # Deploy backend
 cd apps/frontend && bun run build      # Build frontend
 ```
+
+## Troubleshooting
+
+### Setup Script Issues
+
+**"You are not logged in to Cloudflare" or "authentication failed"**
+
+- Your Cloudflare session may have expired
+- Run: `bunx wrangler login`
+- This will open your browser to re-authenticate
+
+**"Could not extract database_id automatically"**
+
+- The script will show the full output from `wrangler d1 create`
+- Look for a line like: `database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`
+- Copy the database_id and manually update `apps/backend/wrangler.toml`
+- See [Manual Setup](#manual-setup-alternative-to-automated-script) for detailed instructions
+
+**"Database already exists"**
+
+- The database name you chose is already in use
+- List existing databases: `bunx wrangler d1 list`
+- Use a different name or get the ID of the existing database: `bunx wrangler d1 info <database-name>`
+
+**"Failed to update wrangler.toml"**
+
+- Make sure the file exists at `apps/backend/wrangler.toml`
+- Check file permissions
+- Manually edit the file following the [Manual Setup](#manual-setup-alternative-to-automated-script) instructions
+
+### Database Issues
+
+**"table already exists" during migration**
+
+- You may have regenerated migrations after they were applied
+- Solution: Delete local DB and reapply migrations:
+  ```bash
+  rm -rf apps/backend/.wrangler/state/v3/d1
+  cd apps/backend && bun run db:migrate
+  ```
+
+**"D1 database not found"**
+
+- Check `database_id` in `apps/backend/wrangler.toml`
+- For local dev, it should be `"local-db"`
+- For production, verify the ID matches your database: `bunx wrangler d1 list`
+- Update the ID if it doesn't match
+
+**"Cannot find database" when deploying**
+
+- Verify your production `database_id` in `wrangler.toml` matches your actual database
+- Run `bunx wrangler d1 list` to see all databases and their IDs
+- Make sure you're using the correct database name in the production config
+
+### Development Issues
+
+**CORS errors**
+
+- Backend CORS is configured for `localhost` and `*.pages.dev`
+- Add custom domains in `apps/backend/src/index.ts` if needed
+- Make sure frontend is using the correct API URL
+
+**Type errors after adding endpoint**
+
+- Restart TypeScript server in your editor
+- Run `bun install` to update Hono RPC types
+- Run `bun run type-check` to verify types
+
+**Frontend can't connect to backend**
+
+- Make sure backend is running: `bun dev` should start both
+- Check backend is accessible at `http://localhost:8787`
+- Verify `VITE_API_URL` in frontend (defaults to `http://localhost:8787`)
+
+### Getting Help
+
+- Check the [Manual Setup](#manual-setup-alternative-to-automated-script) section
+- Review [Database Management Commands](#database-management-commands)
+- See [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
+- Check [Hono Documentation](https://hono.dev)
 
 ## Adding UI Components
 

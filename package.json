@@ -21,5 +21,8 @@
 	"packageManager": "bun@1.1.34",
 	"engines": {
 		"node": ">=18.0.0"
+	},
+	"dependencies": {
+		"bun-types": "^1.3.1"
 	}
 }

@@ -3,6 +3,21 @@
 	"version": "0.1.0",
 	"private": true,
 	"type": "module",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"import": "./src/index.ts"
+		},
+		"./routes/*": {
+			"types": "./src/routes/*.ts",
+			"import": "./src/routes/*.ts"
+		},
+		"./types": {
+			"types": "./src/types.ts",
+			"import": "./src/types.ts"
+		}
+	},
 	"scripts": {
 		"dev": "wrangler dev",
 		"build": "tsc && wrangler deploy --dry-run",

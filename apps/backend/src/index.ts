@@ -77,4 +77,4 @@ app.onError((err, c) => {
 });
 
 export default app;
-export type AppType = typeof apiRoutes;
+export type AppType = typeof app;

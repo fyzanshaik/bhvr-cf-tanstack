@@ -21,8 +21,8 @@ export { schema };
  * Creates a Drizzle ORM instance for D1 database
  * @param db - D1Database instance from Cloudflare Workers
  */
-export function createDb(db: D1Database) {
-	return drizzle(db, { schema });
+export function createDb(db: any) {
+	return drizzle(db as any, { schema });
 }
 
 /**
