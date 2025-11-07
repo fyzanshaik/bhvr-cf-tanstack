@@ -1,6 +1,8 @@
 # AI Agent Development Guide
 
-This document provides complete context for AI assistants working on this codebase.
+**Purpose:** This document provides complete context for AI agents working on this project. Share this with any AI assistant (ChatGPT, Claude, Cursor, etc.) to give them full understanding of the codebase structure, patterns, and conventions.
+
+**For Humans:** See [README.md](./README.md) for quick start and user documentation.
 
 ## Project Overview
 

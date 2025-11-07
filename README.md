@@ -2,7 +2,7 @@
 
 > Fork this. Build your app. Deploy to the edge. Type-safe from database to UI.
 
-**[Live Demo](https://your-demo.pages.dev)** • **[AI Guide](./AGENTS.md)**
+**[Live Demo](https://bhvr-typesafe-cloudflare-template.pages.dev)** • **[Backend API](https://cloudflare-fullstack-backend.fyzan-shaik.workers.dev)** • **[AI Agent Context](./AGENTS.md)**
 
 ## What You Get
 
@@ -290,23 +290,62 @@ Or use your preferred tool: [husky](https://typicode.github.io/husky/), [lefthoo
 -  ✓ Runs linting (`bun run lint`)
 -  ✓ Runs type checking (`bun run type-check`)
 
-**`.github/workflows/deploy-backend.yml`** - Auto-deploys backend:
+**`.github/workflows/deploy-backend.yml`** - Auto-deploys backend to Workers:
 
 -  Triggers on push to main when backend files change
 -  Builds and deploys to Cloudflare Workers
--  **Setup:** Add secrets in repo settings:
-   -  `CLOUDFLARE_API_TOKEN` - Create at dash.cloudflare.com/profile/api-tokens
-   -  `CLOUDFLARE_ACCOUNT_ID` - Found in Workers dashboard
 
-**Frontend:** Connect repo to Cloudflare Pages for automatic deployments (recommended)
+#### Setup GitHub Actions Secrets
+
+To enable automatic deployments, add these secrets to your repository:
+
+1. Go to your repo → **Settings** → **Secrets and variables** → **Actions**
+2. Click **New repository secret** and add:
+
+**`CLOUDFLARE_API_TOKEN`**
+- Go to [Cloudflare Dashboard](https://dash.cloudflare.com/profile/api-tokens)
+- Click **Create Token**
+- Use template: **Edit Cloudflare Workers**
+- Or create custom token with permissions:
+  - Account > Workers Scripts > Edit
+  - Account > Account Settings > Read
+- Copy the token and add it as a secret
+
+**`CLOUDFLARE_ACCOUNT_ID`**
+- Go to [Workers & Pages](https://dash.cloudflare.com/) dashboard
+- Copy your Account ID from the right sidebar
+- Add it as a secret
+
+**Without these secrets, deployment will fail with:**
+```
+✘ [ERROR] In a non-interactive environment, it's necessary to set a 
+CLOUDFLARE_API_TOKEN environment variable for wrangler to work.
+```
+
+**Frontend Deployment:**
+
+Connect your repo to Cloudflare Pages for automatic deployments (recommended):
+1. Go to [Cloudflare Pages](https://dash.cloudflare.com/pages)
+2. Click **Create a project** → **Connect to Git**
+3. Select your repository
+4. Build settings:
+   - **Build command:** `cd apps/frontend && bun install && bun run build`
+   - **Build output:** `apps/frontend/dist`
+5. Add environment variable:
+   - `VITE_API_URL` = `https://your-worker.workers.dev`
 
 ### Manual Deployment
 
-If you prefer manual control, disable GitHub Actions and deploy via CLI:
+If you prefer manual control, deploy via CLI:
 
 ```bash
+# Backend
 cd apps/backend && bun run deploy
-cd apps/frontend && bunx wrangler pages deploy dist
+
+# Frontend
+cd apps/frontend
+bun run build
+bunx wrangler pages deploy dist --project-name=your-project-name
 ```
 
 ## Type Safety Flow
@@ -344,7 +383,7 @@ cd apps/frontend && bunx wrangler pages deploy dist
 
 ## Need More Context?
 
--  **[AGENTS.md](./AGENTS.md)** - Complete guide for AI assistants (patterns, conventions, architecture)
+-  **[AGENTS.md](./AGENTS.md)** - Complete context for AI agents working on this project (patterns, conventions, architecture, workflows)
 -  **[Cloudflare Docs](https://developers.cloudflare.com)** - Workers, Pages, D1 documentation
 -  **[Hono Docs](https://hono.dev)** - Web framework + RPC guide
 -  **[Drizzle Docs](https://orm.drizzle.team)** - ORM and query builder
